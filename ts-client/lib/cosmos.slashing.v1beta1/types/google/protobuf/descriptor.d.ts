@@ -20088,12 +20088,76 @@ export declare const FileDescriptorSet: {
                                 };
                                 proto3Optional?: boolean;
                             } & {
-                                [x: string]: any;
-                            } & {
-                                [x: string]: never;
-                            })[] & {
-                                [x: string]: never;
-                            };
+                                name?: string;
+                                number?: number;
+                                label?: FieldDescriptorProto_Label;
+                                type?: FieldDescriptorProto_Type;
+                                typeName?: string;
+                                extendee?: string;
+                                defaultValue?: string;
+                                oneofIndex?: number;
+                                jsonName?: string;
+                                options?: {
+                                    ctype?: FieldOptions_CType;
+                                    packed?: boolean;
+                                    jstype?: FieldOptions_JSType;
+                                    lazy?: boolean;
+                                    deprecated?: boolean;
+                                    weak?: boolean;
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                } & {
+                                    ctype?: any;
+                                    packed?: any;
+                                    jstype?: any;
+                                    lazy?: any;
+                                    deprecated?: any;
+                                    weak?: any;
+                                    uninterpretedOption?: any;
+                                } & { [K_515 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"][number]["field"][number]["options"], keyof FieldOptions>]: never; };
+                                proto3Optional?: boolean;
+                            } & { [K_516 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"][number]["field"][number], keyof FieldDescriptorProto>]: never; })[] & { [K_517 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"][number]["field"], keyof {
+                                name?: string;
+                                number?: number;
+                                label?: FieldDescriptorProto_Label;
+                                type?: FieldDescriptorProto_Type;
+                                typeName?: string;
+                                extendee?: string;
+                                defaultValue?: string;
+                                oneofIndex?: number;
+                                jsonName?: string;
+                                options?: {
+                                    ctype?: FieldOptions_CType;
+                                    packed?: boolean;
+                                    jstype?: FieldOptions_JSType;
+                                    lazy?: boolean;
+                                    deprecated?: boolean;
+                                    weak?: boolean;
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                };
+                                proto3Optional?: boolean;
+                            }[]>]: never; };
                             extension?: {
                                 name?: string;
                                 number?: number;
@@ -20597,12 +20661,125 @@ export declare const FileDescriptorSet: {
                             })[] & {
                                 [x: string]: never;
                             };
-                            extensionRange?: any;
-                            oneofDecl?: any;
-                            options?: any;
-                            reservedRange?: any;
-                            reservedName?: any;
-                        } & { [K_515 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_516 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"], keyof {
+                            extensionRange?: {
+                                start?: number;
+                                end?: number;
+                                options?: {
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                };
+                            }[] & ({
+                                start?: number;
+                                end?: number;
+                                options?: {
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                };
+                            } & {
+                                [x: string]: any;
+                            } & {
+                                [x: string]: never;
+                            })[] & {
+                                [x: string]: never;
+                            };
+                            oneofDecl?: {
+                                name?: string;
+                                options?: {
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                };
+                            }[] & ({
+                                name?: string;
+                                options?: {
+                                    uninterpretedOption?: {
+                                        name?: {
+                                            namePart?: string;
+                                            isExtension?: boolean;
+                                        }[];
+                                        identifierValue?: string;
+                                        positiveIntValue?: number;
+                                        negativeIntValue?: number;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
+                                    }[];
+                                };
+                            } & {
+                                [x: string]: any;
+                            } & {
+                                [x: string]: never;
+                            })[] & {
+                                [x: string]: never;
+                            };
+                            options?: {
+                                messageSetWireFormat?: boolean;
+                                noStandardDescriptorAccessor?: boolean;
+                                deprecated?: boolean;
+                                mapEntry?: boolean;
+                                uninterpretedOption?: {
+                                    name?: {
+                                        namePart?: string;
+                                        isExtension?: boolean;
+                                    }[];
+                                    identifierValue?: string;
+                                    positiveIntValue?: number;
+                                    negativeIntValue?: number;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
+                                }[];
+                            } & {
+                                [x: string]: any;
+                            } & {
+                                [x: string]: never;
+                            };
+                            reservedRange?: {
+                                start?: number;
+                                end?: number;
+                            }[] & ({
+                                start?: number;
+                                end?: number;
+                            } & {
+                                [x: string]: any;
+                            } & {
+                                [x: string]: never;
+                            })[] & {
+                                [x: string]: never;
+                            };
+                            reservedName?: string[] & string[] & {
+                                [x: string]: never;
+                            };
+                        } & { [K_518 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_519 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number]["nestedType"], keyof {
                             name?: string;
                             field?: {
                                 name?: string;
@@ -20980,7 +21157,7 @@ export declare const FileDescriptorSet: {
                         reservedName?: string[] & string[] & {
                             [x: string]: never;
                         };
-                    } & { [K_517 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_518 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"], keyof {
+                    } & { [K_520 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_521 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number]["nestedType"], keyof {
                         name?: string;
                         field?: {
                             name?: string;
@@ -21358,7 +21535,7 @@ export declare const FileDescriptorSet: {
                     reservedName?: string[] & string[] & {
                         [x: string]: never;
                     };
-                } & { [K_519 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_520 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"], keyof {
+                } & { [K_522 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"][number], keyof DescriptorProto>]: never; })[] & { [K_523 in Exclude<keyof I_1["file"][number]["messageType"][number]["nestedType"], keyof {
                     name?: string;
                     field?: {
                         name?: string;
@@ -21736,7 +21913,7 @@ export declare const FileDescriptorSet: {
                 reservedName?: string[] & string[] & {
                     [x: string]: never;
                 };
-            } & { [K_521 in Exclude<keyof I_1["file"][number]["messageType"][number], keyof DescriptorProto>]: never; })[] & { [K_522 in Exclude<keyof I_1["file"][number]["messageType"], keyof {
+            } & { [K_524 in Exclude<keyof I_1["file"][number]["messageType"][number], keyof DescriptorProto>]: never; })[] & { [K_525 in Exclude<keyof I_1["file"][number]["messageType"], keyof {
                 name?: string;
                 field?: {
                     name?: string;
@@ -22204,7 +22381,7 @@ export declare const FileDescriptorSet: {
                 [x: string]: never;
             };
             syntax?: string;
-        } & { [K_523 in Exclude<keyof I_1["file"][number], keyof FileDescriptorProto>]: never; })[] & { [K_524 in Exclude<keyof I_1["file"], keyof {
+        } & { [K_526 in Exclude<keyof I_1["file"][number], keyof FileDescriptorProto>]: never; })[] & { [K_527 in Exclude<keyof I_1["file"], keyof {
             name?: string;
             package?: string;
             dependency?: string[];
@@ -22540,7 +22717,7 @@ export declare const FileDescriptorSet: {
             };
             syntax?: string;
         }[]>]: never; };
-    } & { [K_525 in Exclude<keyof I_1, "file">]: never; }>(object: I_1): FileDescriptorSet;
+    } & { [K_528 in Exclude<keyof I_1, "file">]: never; }>(object: I_1): FileDescriptorSet;
 };
 export declare const FileDescriptorProto: {
     encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;

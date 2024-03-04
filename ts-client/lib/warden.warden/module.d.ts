@@ -2,90 +2,85 @@ import { DeliverTxResponse, StdFee } from "@cosmjs/stargate";
 import { EncodeObject, GeneratedType, OfflineSigner, Registry } from "@cosmjs/proto-signing";
 import { IgniteClient } from "../client";
 import { Api } from "./rest";
-import { KeychainFees } from "./types/warden/warden/keychain";
-import { MsgAddSpaceOwner } from "./types/warden/warden/tx";
-import { QueryKeyRequestsRequest } from "./types/warden/warden/query";
-import { WalletKeyResponse } from "./types/warden/warden/query";
+import { MsgNewSignTransactionRequest } from "./types/warden/warden/tx";
+import { MsgNewSignTransactionRequestResponse } from "./types/warden/warden/tx";
+import { SignTransactionRequestResponse } from "./types/warden/warden/query";
 import { MsgNewSpace } from "./types/warden/warden/tx";
-import { MsgUpdateKeyRequestResponse } from "./types/warden/warden/tx";
-import { SignTransactionRequest } from "./types/warden/warden/signature";
-import { QuerySignatureRequestByIdRequest } from "./types/warden/warden/query";
-import { MsgUpdateParams } from "./types/warden/warden/tx";
+import { MsgNewKeychain } from "./types/warden/warden/tx";
 import { MsgNewSignatureRequest } from "./types/warden/warden/tx";
-import { KeyRequest } from "./types/warden/warden/key";
-import { QuerySpacesRequest } from "./types/warden/warden/query";
 import { QueryKeychainsResponse } from "./types/warden/warden/query";
-import { QueryKeysResponse } from "./types/warden/warden/query";
-import { MsgAddKeychainPartyResponse } from "./types/warden/warden/tx";
-import { MsgUpdateKeychainResponse } from "./types/warden/warden/tx";
-import { MsgAddKeychainParty } from "./types/warden/warden/tx";
+import { MsgNewSignatureRequestResponse } from "./types/warden/warden/tx";
 import { SignRequest } from "./types/warden/warden/signature";
-import { Space } from "./types/warden/warden/space";
-import { QueryKeyRequestByIdRequest } from "./types/warden/warden/query";
-import { QuerySignTransactionRequestsResponse } from "./types/warden/warden/query";
-import { MsgNewSpaceResponse } from "./types/warden/warden/tx";
-import { QueryParamsResponse } from "./types/warden/warden/query";
-import { QueryKeyRequestByIdResponse } from "./types/warden/warden/query";
-import { MsgNewKeyRequestResponse } from "./types/warden/warden/tx";
-import { MsgUpdateKeyRequest } from "./types/warden/warden/tx";
-import { Params } from "./types/warden/warden/params";
-import { QueryKeychainByAddressResponse } from "./types/warden/warden/query";
-import { QuerySignatureRequestsRequest } from "./types/warden/warden/query";
-import { MsgSignedData } from "./types/warden/warden/tx";
-import { MetadataEthereum } from "./types/warden/warden/tx";
-import { QuerySpaceByAddressResponse } from "./types/warden/warden/query";
-import { QueryKeychainByAddressRequest } from "./types/warden/warden/query";
-import { MsgUpdateKeychain } from "./types/warden/warden/tx";
-import { QuerySignTransactionRequestByIdResponse } from "./types/warden/warden/query";
-import { MsgUpdateSpace } from "./types/warden/warden/tx";
-import { MsgFulfilSignatureRequest } from "./types/warden/warden/tx";
 import { QueryKeychainsRequest } from "./types/warden/warden/query";
 import { QuerySpaceByAddressRequest } from "./types/warden/warden/query";
-import { QuerySignTransactionRequestByIdRequest } from "./types/warden/warden/query";
-import { MsgNewSignTransactionRequestResponse } from "./types/warden/warden/tx";
-import { Key } from "./types/warden/warden/key";
-import { QuerySignatureRequestByIdResponse } from "./types/warden/warden/query";
-import { MsgRemoveSpaceOwner } from "./types/warden/warden/tx";
-import { MsgNewKeyRequest } from "./types/warden/warden/tx";
-import { MsgNewSignTransactionRequest } from "./types/warden/warden/tx";
-import { Keychain } from "./types/warden/warden/keychain";
-import { QuerySpacesByOwnerRequest } from "./types/warden/warden/query";
-import { QueryKeysRequest } from "./types/warden/warden/query";
-import { QuerySignatureRequestsResponse } from "./types/warden/warden/query";
-import { QuerySignTransactionRequestsRequest } from "./types/warden/warden/query";
-import { GenesisState } from "./types/warden/warden/genesis";
-import { MsgUpdateParamsResponse } from "./types/warden/warden/tx";
-import { MsgNewKeychainResponse } from "./types/warden/warden/tx";
-import { QuerySpacesResponse } from "./types/warden/warden/query";
-import { KeyResponse } from "./types/warden/warden/query";
-import { MsgNewSignatureRequestResponse } from "./types/warden/warden/tx";
-import { SignTransactionRequestResponse } from "./types/warden/warden/query";
-import { MsgNewKeychain } from "./types/warden/warden/tx";
-import { MsgNewKey } from "./types/warden/warden/tx";
-import { QueryParamsRequest } from "./types/warden/warden/query";
+import { Space } from "./types/warden/warden/space";
+import { Params } from "./types/warden/warden/params";
+import { MsgAddSpaceOwner } from "./types/warden/warden/tx";
+import { MsgNewKeyRequestResponse } from "./types/warden/warden/tx";
 import { QueryKeyRequestsResponse } from "./types/warden/warden/query";
-import { MsgUpdateSpaceResponse } from "./types/warden/warden/tx";
+import { QuerySignatureRequestsResponse } from "./types/warden/warden/query";
+import { MsgUpdateKeyRequestResponse } from "./types/warden/warden/tx";
+import { QuerySpaceByAddressResponse } from "./types/warden/warden/query";
+import { QueryKeychainByAddressRequest } from "./types/warden/warden/query";
 import { MsgFulfilSignatureRequestResponse } from "./types/warden/warden/tx";
+import { SignTransactionRequest } from "./types/warden/warden/signature";
+import { Key } from "./types/warden/warden/key";
+import { MsgUpdateParamsResponse } from "./types/warden/warden/tx";
 import { MsgAddSpaceOwnerResponse } from "./types/warden/warden/tx";
+import { MsgNewKeychainResponse } from "./types/warden/warden/tx";
+import { QuerySpacesRequest } from "./types/warden/warden/query";
 import { MsgRemoveSpaceOwnerResponse } from "./types/warden/warden/tx";
-export { KeychainFees, MsgAddSpaceOwner, QueryKeyRequestsRequest, WalletKeyResponse, MsgNewSpace, MsgUpdateKeyRequestResponse, SignTransactionRequest, QuerySignatureRequestByIdRequest, MsgUpdateParams, MsgNewSignatureRequest, KeyRequest, QuerySpacesRequest, QueryKeychainsResponse, QueryKeysResponse, MsgAddKeychainPartyResponse, MsgUpdateKeychainResponse, MsgAddKeychainParty, SignRequest, Space, QueryKeyRequestByIdRequest, QuerySignTransactionRequestsResponse, MsgNewSpaceResponse, QueryParamsResponse, QueryKeyRequestByIdResponse, MsgNewKeyRequestResponse, MsgUpdateKeyRequest, Params, QueryKeychainByAddressResponse, QuerySignatureRequestsRequest, MsgSignedData, MetadataEthereum, QuerySpaceByAddressResponse, QueryKeychainByAddressRequest, MsgUpdateKeychain, QuerySignTransactionRequestByIdResponse, MsgUpdateSpace, MsgFulfilSignatureRequest, QueryKeychainsRequest, QuerySpaceByAddressRequest, QuerySignTransactionRequestByIdRequest, MsgNewSignTransactionRequestResponse, Key, QuerySignatureRequestByIdResponse, MsgRemoveSpaceOwner, MsgNewKeyRequest, MsgNewSignTransactionRequest, Keychain, QuerySpacesByOwnerRequest, QueryKeysRequest, QuerySignatureRequestsResponse, QuerySignTransactionRequestsRequest, GenesisState, MsgUpdateParamsResponse, MsgNewKeychainResponse, QuerySpacesResponse, KeyResponse, MsgNewSignatureRequestResponse, SignTransactionRequestResponse, MsgNewKeychain, MsgNewKey, QueryParamsRequest, QueryKeyRequestsResponse, MsgUpdateSpaceResponse, MsgFulfilSignatureRequestResponse, MsgAddSpaceOwnerResponse, MsgRemoveSpaceOwnerResponse };
-type sendKeychainFeesParams = {
-    value: KeychainFees;
+import { MsgUpdateSpace } from "./types/warden/warden/tx";
+import { QueryKeyRequestByIdRequest } from "./types/warden/warden/query";
+import { WalletKeyResponse } from "./types/warden/warden/query";
+import { QueryKeyRequestByIdResponse } from "./types/warden/warden/query";
+import { KeyRequest } from "./types/warden/warden/key";
+import { QueryKeyRequestsRequest } from "./types/warden/warden/query";
+import { QueryKeysResponse } from "./types/warden/warden/query";
+import { QuerySignTransactionRequestsRequest } from "./types/warden/warden/query";
+import { QueryParamsRequest } from "./types/warden/warden/query";
+import { QuerySpacesResponse } from "./types/warden/warden/query";
+import { QueryKeysRequest } from "./types/warden/warden/query";
+import { QuerySignTransactionRequestByIdRequest } from "./types/warden/warden/query";
+import { KeychainFees } from "./types/warden/warden/keychain";
+import { MsgNewSpaceResponse } from "./types/warden/warden/tx";
+import { MsgAddKeychainParty } from "./types/warden/warden/tx";
+import { MsgUpdateSpaceResponse } from "./types/warden/warden/tx";
+import { MsgUpdateParams } from "./types/warden/warden/tx";
+import { QuerySignatureRequestsRequest } from "./types/warden/warden/query";
+import { QuerySignTransactionRequestByIdResponse } from "./types/warden/warden/query";
+import { KeyResponse } from "./types/warden/warden/query";
+import { QuerySignatureRequestByIdRequest } from "./types/warden/warden/query";
+import { QuerySignTransactionRequestsResponse } from "./types/warden/warden/query";
+import { MsgNewKeyRequest } from "./types/warden/warden/tx";
+import { MsgUpdateKeyRequest } from "./types/warden/warden/tx";
+import { MsgFulfilSignatureRequest } from "./types/warden/warden/tx";
+import { QueryKeychainByAddressResponse } from "./types/warden/warden/query";
+import { GenesisState } from "./types/warden/warden/genesis";
+import { MsgAddKeychainPartyResponse } from "./types/warden/warden/tx";
+import { MetadataEthereum } from "./types/warden/warden/tx";
+import { MsgUpdateKeychain } from "./types/warden/warden/tx";
+import { MsgNewKey } from "./types/warden/warden/tx";
+import { MsgSignedData } from "./types/warden/warden/tx";
+import { QuerySpacesByOwnerRequest } from "./types/warden/warden/query";
+import { QuerySignatureRequestByIdResponse } from "./types/warden/warden/query";
+import { Keychain } from "./types/warden/warden/keychain";
+import { MsgRemoveSpaceOwner } from "./types/warden/warden/tx";
+import { MsgUpdateKeychainResponse } from "./types/warden/warden/tx";
+import { QueryParamsResponse } from "./types/warden/warden/query";
+export { MsgNewSignTransactionRequest, MsgNewSignTransactionRequestResponse, SignTransactionRequestResponse, MsgNewSpace, MsgNewKeychain, MsgNewSignatureRequest, QueryKeychainsResponse, MsgNewSignatureRequestResponse, SignRequest, QueryKeychainsRequest, QuerySpaceByAddressRequest, Space, Params, MsgAddSpaceOwner, MsgNewKeyRequestResponse, QueryKeyRequestsResponse, QuerySignatureRequestsResponse, MsgUpdateKeyRequestResponse, QuerySpaceByAddressResponse, QueryKeychainByAddressRequest, MsgFulfilSignatureRequestResponse, SignTransactionRequest, Key, MsgUpdateParamsResponse, MsgAddSpaceOwnerResponse, MsgNewKeychainResponse, QuerySpacesRequest, MsgRemoveSpaceOwnerResponse, MsgUpdateSpace, QueryKeyRequestByIdRequest, WalletKeyResponse, QueryKeyRequestByIdResponse, KeyRequest, QueryKeyRequestsRequest, QueryKeysResponse, QuerySignTransactionRequestsRequest, QueryParamsRequest, QuerySpacesResponse, QueryKeysRequest, QuerySignTransactionRequestByIdRequest, KeychainFees, MsgNewSpaceResponse, MsgAddKeychainParty, MsgUpdateSpaceResponse, MsgUpdateParams, QuerySignatureRequestsRequest, QuerySignTransactionRequestByIdResponse, KeyResponse, QuerySignatureRequestByIdRequest, QuerySignTransactionRequestsResponse, MsgNewKeyRequest, MsgUpdateKeyRequest, MsgFulfilSignatureRequest, QueryKeychainByAddressResponse, GenesisState, MsgAddKeychainPartyResponse, MetadataEthereum, MsgUpdateKeychain, MsgNewKey, MsgSignedData, QuerySpacesByOwnerRequest, QuerySignatureRequestByIdResponse, Keychain, MsgRemoveSpaceOwner, MsgUpdateKeychainResponse, QueryParamsResponse };
+type sendMsgNewSignTransactionRequestParams = {
+    value: MsgNewSignTransactionRequest;
     fee?: StdFee;
     memo?: string;
 };
-type sendMsgAddSpaceOwnerParams = {
-    value: MsgAddSpaceOwner;
+type sendMsgNewSignTransactionRequestResponseParams = {
+    value: MsgNewSignTransactionRequestResponse;
     fee?: StdFee;
     memo?: string;
 };
-type sendQueryKeyRequestsRequestParams = {
-    value: QueryKeyRequestsRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendWalletKeyResponseParams = {
-    value: WalletKeyResponse;
+type sendSignTransactionRequestResponseParams = {
+    value: SignTransactionRequestResponse;
     fee?: StdFee;
     memo?: string;
 };
@@ -94,23 +89,8 @@ type sendMsgNewSpaceParams = {
     fee?: StdFee;
     memo?: string;
 };
-type sendMsgUpdateKeyRequestResponseParams = {
-    value: MsgUpdateKeyRequestResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendSignTransactionRequestParams = {
-    value: SignTransactionRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignatureRequestByIdRequestParams = {
-    value: QuerySignatureRequestByIdRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateParamsParams = {
-    value: MsgUpdateParams;
+type sendMsgNewKeychainParams = {
+    value: MsgNewKeychain;
     fee?: StdFee;
     memo?: string;
 };
@@ -119,138 +99,18 @@ type sendMsgNewSignatureRequestParams = {
     fee?: StdFee;
     memo?: string;
 };
-type sendKeyRequestParams = {
-    value: KeyRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySpacesRequestParams = {
-    value: QuerySpacesRequest;
-    fee?: StdFee;
-    memo?: string;
-};
 type sendQueryKeychainsResponseParams = {
     value: QueryKeychainsResponse;
     fee?: StdFee;
     memo?: string;
 };
-type sendQueryKeysResponseParams = {
-    value: QueryKeysResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgAddKeychainPartyResponseParams = {
-    value: MsgAddKeychainPartyResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateKeychainResponseParams = {
-    value: MsgUpdateKeychainResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgAddKeychainPartyParams = {
-    value: MsgAddKeychainParty;
+type sendMsgNewSignatureRequestResponseParams = {
+    value: MsgNewSignatureRequestResponse;
     fee?: StdFee;
     memo?: string;
 };
 type sendSignRequestParams = {
     value: SignRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendSpaceParams = {
-    value: Space;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryKeyRequestByIdRequestParams = {
-    value: QueryKeyRequestByIdRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignTransactionRequestsResponseParams = {
-    value: QuerySignTransactionRequestsResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewSpaceResponseParams = {
-    value: MsgNewSpaceResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryParamsResponseParams = {
-    value: QueryParamsResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryKeyRequestByIdResponseParams = {
-    value: QueryKeyRequestByIdResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewKeyRequestResponseParams = {
-    value: MsgNewKeyRequestResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateKeyRequestParams = {
-    value: MsgUpdateKeyRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendParamsParams = {
-    value: Params;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryKeychainByAddressResponseParams = {
-    value: QueryKeychainByAddressResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignatureRequestsRequestParams = {
-    value: QuerySignatureRequestsRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgSignedDataParams = {
-    value: MsgSignedData;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMetadataEthereumParams = {
-    value: MetadataEthereum;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySpaceByAddressResponseParams = {
-    value: QuerySpaceByAddressResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryKeychainByAddressRequestParams = {
-    value: QueryKeychainByAddressRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateKeychainParams = {
-    value: MsgUpdateKeychain;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignTransactionRequestByIdResponseParams = {
-    value: QuerySignTransactionRequestByIdResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateSpaceParams = {
-    value: MsgUpdateSpace;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgFulfilSignatureRequestParams = {
-    value: MsgFulfilSignatureRequest;
     fee?: StdFee;
     memo?: string;
 };
@@ -264,113 +124,23 @@ type sendQuerySpaceByAddressRequestParams = {
     fee?: StdFee;
     memo?: string;
 };
-type sendQuerySignTransactionRequestByIdRequestParams = {
-    value: QuerySignTransactionRequestByIdRequest;
+type sendSpaceParams = {
+    value: Space;
     fee?: StdFee;
     memo?: string;
 };
-type sendMsgNewSignTransactionRequestResponseParams = {
-    value: MsgNewSignTransactionRequestResponse;
+type sendParamsParams = {
+    value: Params;
     fee?: StdFee;
     memo?: string;
 };
-type sendKeyParams = {
-    value: Key;
+type sendMsgAddSpaceOwnerParams = {
+    value: MsgAddSpaceOwner;
     fee?: StdFee;
     memo?: string;
 };
-type sendQuerySignatureRequestByIdResponseParams = {
-    value: QuerySignatureRequestByIdResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgRemoveSpaceOwnerParams = {
-    value: MsgRemoveSpaceOwner;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewKeyRequestParams = {
-    value: MsgNewKeyRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewSignTransactionRequestParams = {
-    value: MsgNewSignTransactionRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendKeychainParams = {
-    value: Keychain;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySpacesByOwnerRequestParams = {
-    value: QuerySpacesByOwnerRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryKeysRequestParams = {
-    value: QueryKeysRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignatureRequestsResponseParams = {
-    value: QuerySignatureRequestsResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySignTransactionRequestsRequestParams = {
-    value: QuerySignTransactionRequestsRequest;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendGenesisStateParams = {
-    value: GenesisState;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgUpdateParamsResponseParams = {
-    value: MsgUpdateParamsResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewKeychainResponseParams = {
-    value: MsgNewKeychainResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQuerySpacesResponseParams = {
-    value: QuerySpacesResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendKeyResponseParams = {
-    value: KeyResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewSignatureRequestResponseParams = {
-    value: MsgNewSignatureRequestResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendSignTransactionRequestResponseParams = {
-    value: SignTransactionRequestResponse;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewKeychainParams = {
-    value: MsgNewKeychain;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendMsgNewKeyParams = {
-    value: MsgNewKey;
-    fee?: StdFee;
-    memo?: string;
-};
-type sendQueryParamsRequestParams = {
-    value: QueryParamsRequest;
+type sendMsgNewKeyRequestResponseParams = {
+    value: MsgNewKeyRequestResponse;
     fee?: StdFee;
     memo?: string;
 };
@@ -379,8 +149,23 @@ type sendQueryKeyRequestsResponseParams = {
     fee?: StdFee;
     memo?: string;
 };
-type sendMsgUpdateSpaceResponseParams = {
-    value: MsgUpdateSpaceResponse;
+type sendQuerySignatureRequestsResponseParams = {
+    value: QuerySignatureRequestsResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateKeyRequestResponseParams = {
+    value: MsgUpdateKeyRequestResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySpaceByAddressResponseParams = {
+    value: QuerySpaceByAddressResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeychainByAddressRequestParams = {
+    value: QueryKeychainByAddressRequest;
     fee?: StdFee;
     memo?: string;
 };
@@ -389,8 +174,33 @@ type sendMsgFulfilSignatureRequestResponseParams = {
     fee?: StdFee;
     memo?: string;
 };
+type sendSignTransactionRequestParams = {
+    value: SignTransactionRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendKeyParams = {
+    value: Key;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateParamsResponseParams = {
+    value: MsgUpdateParamsResponse;
+    fee?: StdFee;
+    memo?: string;
+};
 type sendMsgAddSpaceOwnerResponseParams = {
     value: MsgAddSpaceOwnerResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgNewKeychainResponseParams = {
+    value: MsgNewKeychainResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySpacesRequestParams = {
+    value: QuerySpacesRequest;
     fee?: StdFee;
     memo?: string;
 };
@@ -399,116 +209,222 @@ type sendMsgRemoveSpaceOwnerResponseParams = {
     fee?: StdFee;
     memo?: string;
 };
-type keychainFeesParams = {
-    value: KeychainFees;
+type sendMsgUpdateSpaceParams = {
+    value: MsgUpdateSpace;
+    fee?: StdFee;
+    memo?: string;
 };
-type msgAddSpaceOwnerParams = {
-    value: MsgAddSpaceOwner;
+type sendQueryKeyRequestByIdRequestParams = {
+    value: QueryKeyRequestByIdRequest;
+    fee?: StdFee;
+    memo?: string;
 };
-type queryKeyRequestsRequestParams = {
-    value: QueryKeyRequestsRequest;
-};
-type walletKeyResponseParams = {
+type sendWalletKeyResponseParams = {
     value: WalletKeyResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeyRequestByIdResponseParams = {
+    value: QueryKeyRequestByIdResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendKeyRequestParams = {
+    value: KeyRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeyRequestsRequestParams = {
+    value: QueryKeyRequestsRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeysResponseParams = {
+    value: QueryKeysResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignTransactionRequestsRequestParams = {
+    value: QuerySignTransactionRequestsRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryParamsRequestParams = {
+    value: QueryParamsRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySpacesResponseParams = {
+    value: QuerySpacesResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeysRequestParams = {
+    value: QueryKeysRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignTransactionRequestByIdRequestParams = {
+    value: QuerySignTransactionRequestByIdRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendKeychainFeesParams = {
+    value: KeychainFees;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgNewSpaceResponseParams = {
+    value: MsgNewSpaceResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgAddKeychainPartyParams = {
+    value: MsgAddKeychainParty;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateSpaceResponseParams = {
+    value: MsgUpdateSpaceResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateParamsParams = {
+    value: MsgUpdateParams;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignatureRequestsRequestParams = {
+    value: QuerySignatureRequestsRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignTransactionRequestByIdResponseParams = {
+    value: QuerySignTransactionRequestByIdResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendKeyResponseParams = {
+    value: KeyResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignatureRequestByIdRequestParams = {
+    value: QuerySignatureRequestByIdRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignTransactionRequestsResponseParams = {
+    value: QuerySignTransactionRequestsResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgNewKeyRequestParams = {
+    value: MsgNewKeyRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateKeyRequestParams = {
+    value: MsgUpdateKeyRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgFulfilSignatureRequestParams = {
+    value: MsgFulfilSignatureRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryKeychainByAddressResponseParams = {
+    value: QueryKeychainByAddressResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendGenesisStateParams = {
+    value: GenesisState;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgAddKeychainPartyResponseParams = {
+    value: MsgAddKeychainPartyResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMetadataEthereumParams = {
+    value: MetadataEthereum;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateKeychainParams = {
+    value: MsgUpdateKeychain;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgNewKeyParams = {
+    value: MsgNewKey;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgSignedDataParams = {
+    value: MsgSignedData;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySpacesByOwnerRequestParams = {
+    value: QuerySpacesByOwnerRequest;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQuerySignatureRequestByIdResponseParams = {
+    value: QuerySignatureRequestByIdResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendKeychainParams = {
+    value: Keychain;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgRemoveSpaceOwnerParams = {
+    value: MsgRemoveSpaceOwner;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendMsgUpdateKeychainResponseParams = {
+    value: MsgUpdateKeychainResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type sendQueryParamsResponseParams = {
+    value: QueryParamsResponse;
+    fee?: StdFee;
+    memo?: string;
+};
+type msgNewSignTransactionRequestParams = {
+    value: MsgNewSignTransactionRequest;
+};
+type msgNewSignTransactionRequestResponseParams = {
+    value: MsgNewSignTransactionRequestResponse;
+};
+type signTransactionRequestResponseParams = {
+    value: SignTransactionRequestResponse;
 };
 type msgNewSpaceParams = {
     value: MsgNewSpace;
 };
-type msgUpdateKeyRequestResponseParams = {
-    value: MsgUpdateKeyRequestResponse;
-};
-type signTransactionRequestParams = {
-    value: SignTransactionRequest;
-};
-type querySignatureRequestByIdRequestParams = {
-    value: QuerySignatureRequestByIdRequest;
-};
-type msgUpdateParamsParams = {
-    value: MsgUpdateParams;
+type msgNewKeychainParams = {
+    value: MsgNewKeychain;
 };
 type msgNewSignatureRequestParams = {
     value: MsgNewSignatureRequest;
 };
-type keyRequestParams = {
-    value: KeyRequest;
-};
-type querySpacesRequestParams = {
-    value: QuerySpacesRequest;
-};
 type queryKeychainsResponseParams = {
     value: QueryKeychainsResponse;
 };
-type queryKeysResponseParams = {
-    value: QueryKeysResponse;
-};
-type msgAddKeychainPartyResponseParams = {
-    value: MsgAddKeychainPartyResponse;
-};
-type msgUpdateKeychainResponseParams = {
-    value: MsgUpdateKeychainResponse;
-};
-type msgAddKeychainPartyParams = {
-    value: MsgAddKeychainParty;
+type msgNewSignatureRequestResponseParams = {
+    value: MsgNewSignatureRequestResponse;
 };
 type signRequestParams = {
     value: SignRequest;
-};
-type spaceParams = {
-    value: Space;
-};
-type queryKeyRequestByIdRequestParams = {
-    value: QueryKeyRequestByIdRequest;
-};
-type querySignTransactionRequestsResponseParams = {
-    value: QuerySignTransactionRequestsResponse;
-};
-type msgNewSpaceResponseParams = {
-    value: MsgNewSpaceResponse;
-};
-type queryParamsResponseParams = {
-    value: QueryParamsResponse;
-};
-type queryKeyRequestByIdResponseParams = {
-    value: QueryKeyRequestByIdResponse;
-};
-type msgNewKeyRequestResponseParams = {
-    value: MsgNewKeyRequestResponse;
-};
-type msgUpdateKeyRequestParams = {
-    value: MsgUpdateKeyRequest;
-};
-type paramsParams = {
-    value: Params;
-};
-type queryKeychainByAddressResponseParams = {
-    value: QueryKeychainByAddressResponse;
-};
-type querySignatureRequestsRequestParams = {
-    value: QuerySignatureRequestsRequest;
-};
-type msgSignedDataParams = {
-    value: MsgSignedData;
-};
-type metadataEthereumParams = {
-    value: MetadataEthereum;
-};
-type querySpaceByAddressResponseParams = {
-    value: QuerySpaceByAddressResponse;
-};
-type queryKeychainByAddressRequestParams = {
-    value: QueryKeychainByAddressRequest;
-};
-type msgUpdateKeychainParams = {
-    value: MsgUpdateKeychain;
-};
-type querySignTransactionRequestByIdResponseParams = {
-    value: QuerySignTransactionRequestByIdResponse;
-};
-type msgUpdateSpaceParams = {
-    value: MsgUpdateSpace;
-};
-type msgFulfilSignatureRequestParams = {
-    value: MsgFulfilSignatureRequest;
 };
 type queryKeychainsRequestParams = {
     value: QueryKeychainsRequest;
@@ -516,86 +432,170 @@ type queryKeychainsRequestParams = {
 type querySpaceByAddressRequestParams = {
     value: QuerySpaceByAddressRequest;
 };
-type querySignTransactionRequestByIdRequestParams = {
-    value: QuerySignTransactionRequestByIdRequest;
+type spaceParams = {
+    value: Space;
 };
-type msgNewSignTransactionRequestResponseParams = {
-    value: MsgNewSignTransactionRequestResponse;
+type paramsParams = {
+    value: Params;
 };
-type keyParams = {
-    value: Key;
+type msgAddSpaceOwnerParams = {
+    value: MsgAddSpaceOwner;
 };
-type querySignatureRequestByIdResponseParams = {
-    value: QuerySignatureRequestByIdResponse;
-};
-type msgRemoveSpaceOwnerParams = {
-    value: MsgRemoveSpaceOwner;
-};
-type msgNewKeyRequestParams = {
-    value: MsgNewKeyRequest;
-};
-type msgNewSignTransactionRequestParams = {
-    value: MsgNewSignTransactionRequest;
-};
-type keychainParams = {
-    value: Keychain;
-};
-type querySpacesByOwnerRequestParams = {
-    value: QuerySpacesByOwnerRequest;
-};
-type queryKeysRequestParams = {
-    value: QueryKeysRequest;
-};
-type querySignatureRequestsResponseParams = {
-    value: QuerySignatureRequestsResponse;
-};
-type querySignTransactionRequestsRequestParams = {
-    value: QuerySignTransactionRequestsRequest;
-};
-type genesisStateParams = {
-    value: GenesisState;
-};
-type msgUpdateParamsResponseParams = {
-    value: MsgUpdateParamsResponse;
-};
-type msgNewKeychainResponseParams = {
-    value: MsgNewKeychainResponse;
-};
-type querySpacesResponseParams = {
-    value: QuerySpacesResponse;
-};
-type keyResponseParams = {
-    value: KeyResponse;
-};
-type msgNewSignatureRequestResponseParams = {
-    value: MsgNewSignatureRequestResponse;
-};
-type signTransactionRequestResponseParams = {
-    value: SignTransactionRequestResponse;
-};
-type msgNewKeychainParams = {
-    value: MsgNewKeychain;
-};
-type msgNewKeyParams = {
-    value: MsgNewKey;
-};
-type queryParamsRequestParams = {
-    value: QueryParamsRequest;
+type msgNewKeyRequestResponseParams = {
+    value: MsgNewKeyRequestResponse;
 };
 type queryKeyRequestsResponseParams = {
     value: QueryKeyRequestsResponse;
 };
-type msgUpdateSpaceResponseParams = {
-    value: MsgUpdateSpaceResponse;
+type querySignatureRequestsResponseParams = {
+    value: QuerySignatureRequestsResponse;
+};
+type msgUpdateKeyRequestResponseParams = {
+    value: MsgUpdateKeyRequestResponse;
+};
+type querySpaceByAddressResponseParams = {
+    value: QuerySpaceByAddressResponse;
+};
+type queryKeychainByAddressRequestParams = {
+    value: QueryKeychainByAddressRequest;
 };
 type msgFulfilSignatureRequestResponseParams = {
     value: MsgFulfilSignatureRequestResponse;
 };
+type signTransactionRequestParams = {
+    value: SignTransactionRequest;
+};
+type keyParams = {
+    value: Key;
+};
+type msgUpdateParamsResponseParams = {
+    value: MsgUpdateParamsResponse;
+};
 type msgAddSpaceOwnerResponseParams = {
     value: MsgAddSpaceOwnerResponse;
 };
+type msgNewKeychainResponseParams = {
+    value: MsgNewKeychainResponse;
+};
+type querySpacesRequestParams = {
+    value: QuerySpacesRequest;
+};
 type msgRemoveSpaceOwnerResponseParams = {
     value: MsgRemoveSpaceOwnerResponse;
+};
+type msgUpdateSpaceParams = {
+    value: MsgUpdateSpace;
+};
+type queryKeyRequestByIdRequestParams = {
+    value: QueryKeyRequestByIdRequest;
+};
+type walletKeyResponseParams = {
+    value: WalletKeyResponse;
+};
+type queryKeyRequestByIdResponseParams = {
+    value: QueryKeyRequestByIdResponse;
+};
+type keyRequestParams = {
+    value: KeyRequest;
+};
+type queryKeyRequestsRequestParams = {
+    value: QueryKeyRequestsRequest;
+};
+type queryKeysResponseParams = {
+    value: QueryKeysResponse;
+};
+type querySignTransactionRequestsRequestParams = {
+    value: QuerySignTransactionRequestsRequest;
+};
+type queryParamsRequestParams = {
+    value: QueryParamsRequest;
+};
+type querySpacesResponseParams = {
+    value: QuerySpacesResponse;
+};
+type queryKeysRequestParams = {
+    value: QueryKeysRequest;
+};
+type querySignTransactionRequestByIdRequestParams = {
+    value: QuerySignTransactionRequestByIdRequest;
+};
+type keychainFeesParams = {
+    value: KeychainFees;
+};
+type msgNewSpaceResponseParams = {
+    value: MsgNewSpaceResponse;
+};
+type msgAddKeychainPartyParams = {
+    value: MsgAddKeychainParty;
+};
+type msgUpdateSpaceResponseParams = {
+    value: MsgUpdateSpaceResponse;
+};
+type msgUpdateParamsParams = {
+    value: MsgUpdateParams;
+};
+type querySignatureRequestsRequestParams = {
+    value: QuerySignatureRequestsRequest;
+};
+type querySignTransactionRequestByIdResponseParams = {
+    value: QuerySignTransactionRequestByIdResponse;
+};
+type keyResponseParams = {
+    value: KeyResponse;
+};
+type querySignatureRequestByIdRequestParams = {
+    value: QuerySignatureRequestByIdRequest;
+};
+type querySignTransactionRequestsResponseParams = {
+    value: QuerySignTransactionRequestsResponse;
+};
+type msgNewKeyRequestParams = {
+    value: MsgNewKeyRequest;
+};
+type msgUpdateKeyRequestParams = {
+    value: MsgUpdateKeyRequest;
+};
+type msgFulfilSignatureRequestParams = {
+    value: MsgFulfilSignatureRequest;
+};
+type queryKeychainByAddressResponseParams = {
+    value: QueryKeychainByAddressResponse;
+};
+type genesisStateParams = {
+    value: GenesisState;
+};
+type msgAddKeychainPartyResponseParams = {
+    value: MsgAddKeychainPartyResponse;
+};
+type metadataEthereumParams = {
+    value: MetadataEthereum;
+};
+type msgUpdateKeychainParams = {
+    value: MsgUpdateKeychain;
+};
+type msgNewKeyParams = {
+    value: MsgNewKey;
+};
+type msgSignedDataParams = {
+    value: MsgSignedData;
+};
+type querySpacesByOwnerRequestParams = {
+    value: QuerySpacesByOwnerRequest;
+};
+type querySignatureRequestByIdResponseParams = {
+    value: QuerySignatureRequestByIdResponse;
+};
+type keychainParams = {
+    value: Keychain;
+};
+type msgRemoveSpaceOwnerParams = {
+    value: MsgRemoveSpaceOwner;
+};
+type msgUpdateKeychainResponseParams = {
+    value: MsgUpdateKeychainResponse;
+};
+type queryParamsResponseParams = {
+    value: QueryParamsResponse;
 };
 export declare const registry: Registry;
 interface TxClientOptions {
@@ -604,138 +604,138 @@ interface TxClientOptions {
     signer?: OfflineSigner;
 }
 export declare const txClient: ({ signer, prefix, addr }?: TxClientOptions) => {
-    sendKeychainFees({ value, fee, memo }: sendKeychainFeesParams): Promise<DeliverTxResponse>;
-    sendMsgAddSpaceOwner({ value, fee, memo }: sendMsgAddSpaceOwnerParams): Promise<DeliverTxResponse>;
-    sendQueryKeyRequestsRequest({ value, fee, memo }: sendQueryKeyRequestsRequestParams): Promise<DeliverTxResponse>;
-    sendWalletKeyResponse({ value, fee, memo }: sendWalletKeyResponseParams): Promise<DeliverTxResponse>;
+    sendMsgNewSignTransactionRequest({ value, fee, memo }: sendMsgNewSignTransactionRequestParams): Promise<DeliverTxResponse>;
+    sendMsgNewSignTransactionRequestResponse({ value, fee, memo }: sendMsgNewSignTransactionRequestResponseParams): Promise<DeliverTxResponse>;
+    sendSignTransactionRequestResponse({ value, fee, memo }: sendSignTransactionRequestResponseParams): Promise<DeliverTxResponse>;
     sendMsgNewSpace({ value, fee, memo }: sendMsgNewSpaceParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateKeyRequestResponse({ value, fee, memo }: sendMsgUpdateKeyRequestResponseParams): Promise<DeliverTxResponse>;
-    sendSignTransactionRequest({ value, fee, memo }: sendSignTransactionRequestParams): Promise<DeliverTxResponse>;
-    sendQuerySignatureRequestByIdRequest({ value, fee, memo }: sendQuerySignatureRequestByIdRequestParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateParams({ value, fee, memo }: sendMsgUpdateParamsParams): Promise<DeliverTxResponse>;
+    sendMsgNewKeychain({ value, fee, memo }: sendMsgNewKeychainParams): Promise<DeliverTxResponse>;
     sendMsgNewSignatureRequest({ value, fee, memo }: sendMsgNewSignatureRequestParams): Promise<DeliverTxResponse>;
-    sendKeyRequest({ value, fee, memo }: sendKeyRequestParams): Promise<DeliverTxResponse>;
-    sendQuerySpacesRequest({ value, fee, memo }: sendQuerySpacesRequestParams): Promise<DeliverTxResponse>;
     sendQueryKeychainsResponse({ value, fee, memo }: sendQueryKeychainsResponseParams): Promise<DeliverTxResponse>;
-    sendQueryKeysResponse({ value, fee, memo }: sendQueryKeysResponseParams): Promise<DeliverTxResponse>;
-    sendMsgAddKeychainPartyResponse({ value, fee, memo }: sendMsgAddKeychainPartyResponseParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateKeychainResponse({ value, fee, memo }: sendMsgUpdateKeychainResponseParams): Promise<DeliverTxResponse>;
-    sendMsgAddKeychainParty({ value, fee, memo }: sendMsgAddKeychainPartyParams): Promise<DeliverTxResponse>;
+    sendMsgNewSignatureRequestResponse({ value, fee, memo }: sendMsgNewSignatureRequestResponseParams): Promise<DeliverTxResponse>;
     sendSignRequest({ value, fee, memo }: sendSignRequestParams): Promise<DeliverTxResponse>;
-    sendSpace({ value, fee, memo }: sendSpaceParams): Promise<DeliverTxResponse>;
-    sendQueryKeyRequestByIdRequest({ value, fee, memo }: sendQueryKeyRequestByIdRequestParams): Promise<DeliverTxResponse>;
-    sendQuerySignTransactionRequestsResponse({ value, fee, memo }: sendQuerySignTransactionRequestsResponseParams): Promise<DeliverTxResponse>;
-    sendMsgNewSpaceResponse({ value, fee, memo }: sendMsgNewSpaceResponseParams): Promise<DeliverTxResponse>;
-    sendQueryParamsResponse({ value, fee, memo }: sendQueryParamsResponseParams): Promise<DeliverTxResponse>;
-    sendQueryKeyRequestByIdResponse({ value, fee, memo }: sendQueryKeyRequestByIdResponseParams): Promise<DeliverTxResponse>;
-    sendMsgNewKeyRequestResponse({ value, fee, memo }: sendMsgNewKeyRequestResponseParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateKeyRequest({ value, fee, memo }: sendMsgUpdateKeyRequestParams): Promise<DeliverTxResponse>;
-    sendParams({ value, fee, memo }: sendParamsParams): Promise<DeliverTxResponse>;
-    sendQueryKeychainByAddressResponse({ value, fee, memo }: sendQueryKeychainByAddressResponseParams): Promise<DeliverTxResponse>;
-    sendQuerySignatureRequestsRequest({ value, fee, memo }: sendQuerySignatureRequestsRequestParams): Promise<DeliverTxResponse>;
-    sendMsgSignedData({ value, fee, memo }: sendMsgSignedDataParams): Promise<DeliverTxResponse>;
-    sendMetadataEthereum({ value, fee, memo }: sendMetadataEthereumParams): Promise<DeliverTxResponse>;
-    sendQuerySpaceByAddressResponse({ value, fee, memo }: sendQuerySpaceByAddressResponseParams): Promise<DeliverTxResponse>;
-    sendQueryKeychainByAddressRequest({ value, fee, memo }: sendQueryKeychainByAddressRequestParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateKeychain({ value, fee, memo }: sendMsgUpdateKeychainParams): Promise<DeliverTxResponse>;
-    sendQuerySignTransactionRequestByIdResponse({ value, fee, memo }: sendQuerySignTransactionRequestByIdResponseParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateSpace({ value, fee, memo }: sendMsgUpdateSpaceParams): Promise<DeliverTxResponse>;
-    sendMsgFulfilSignatureRequest({ value, fee, memo }: sendMsgFulfilSignatureRequestParams): Promise<DeliverTxResponse>;
     sendQueryKeychainsRequest({ value, fee, memo }: sendQueryKeychainsRequestParams): Promise<DeliverTxResponse>;
     sendQuerySpaceByAddressRequest({ value, fee, memo }: sendQuerySpaceByAddressRequestParams): Promise<DeliverTxResponse>;
-    sendQuerySignTransactionRequestByIdRequest({ value, fee, memo }: sendQuerySignTransactionRequestByIdRequestParams): Promise<DeliverTxResponse>;
-    sendMsgNewSignTransactionRequestResponse({ value, fee, memo }: sendMsgNewSignTransactionRequestResponseParams): Promise<DeliverTxResponse>;
-    sendKey({ value, fee, memo }: sendKeyParams): Promise<DeliverTxResponse>;
-    sendQuerySignatureRequestByIdResponse({ value, fee, memo }: sendQuerySignatureRequestByIdResponseParams): Promise<DeliverTxResponse>;
-    sendMsgRemoveSpaceOwner({ value, fee, memo }: sendMsgRemoveSpaceOwnerParams): Promise<DeliverTxResponse>;
-    sendMsgNewKeyRequest({ value, fee, memo }: sendMsgNewKeyRequestParams): Promise<DeliverTxResponse>;
-    sendMsgNewSignTransactionRequest({ value, fee, memo }: sendMsgNewSignTransactionRequestParams): Promise<DeliverTxResponse>;
-    sendKeychain({ value, fee, memo }: sendKeychainParams): Promise<DeliverTxResponse>;
-    sendQuerySpacesByOwnerRequest({ value, fee, memo }: sendQuerySpacesByOwnerRequestParams): Promise<DeliverTxResponse>;
-    sendQueryKeysRequest({ value, fee, memo }: sendQueryKeysRequestParams): Promise<DeliverTxResponse>;
-    sendQuerySignatureRequestsResponse({ value, fee, memo }: sendQuerySignatureRequestsResponseParams): Promise<DeliverTxResponse>;
-    sendQuerySignTransactionRequestsRequest({ value, fee, memo }: sendQuerySignTransactionRequestsRequestParams): Promise<DeliverTxResponse>;
-    sendGenesisState({ value, fee, memo }: sendGenesisStateParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateParamsResponse({ value, fee, memo }: sendMsgUpdateParamsResponseParams): Promise<DeliverTxResponse>;
-    sendMsgNewKeychainResponse({ value, fee, memo }: sendMsgNewKeychainResponseParams): Promise<DeliverTxResponse>;
-    sendQuerySpacesResponse({ value, fee, memo }: sendQuerySpacesResponseParams): Promise<DeliverTxResponse>;
-    sendKeyResponse({ value, fee, memo }: sendKeyResponseParams): Promise<DeliverTxResponse>;
-    sendMsgNewSignatureRequestResponse({ value, fee, memo }: sendMsgNewSignatureRequestResponseParams): Promise<DeliverTxResponse>;
-    sendSignTransactionRequestResponse({ value, fee, memo }: sendSignTransactionRequestResponseParams): Promise<DeliverTxResponse>;
-    sendMsgNewKeychain({ value, fee, memo }: sendMsgNewKeychainParams): Promise<DeliverTxResponse>;
-    sendMsgNewKey({ value, fee, memo }: sendMsgNewKeyParams): Promise<DeliverTxResponse>;
-    sendQueryParamsRequest({ value, fee, memo }: sendQueryParamsRequestParams): Promise<DeliverTxResponse>;
+    sendSpace({ value, fee, memo }: sendSpaceParams): Promise<DeliverTxResponse>;
+    sendParams({ value, fee, memo }: sendParamsParams): Promise<DeliverTxResponse>;
+    sendMsgAddSpaceOwner({ value, fee, memo }: sendMsgAddSpaceOwnerParams): Promise<DeliverTxResponse>;
+    sendMsgNewKeyRequestResponse({ value, fee, memo }: sendMsgNewKeyRequestResponseParams): Promise<DeliverTxResponse>;
     sendQueryKeyRequestsResponse({ value, fee, memo }: sendQueryKeyRequestsResponseParams): Promise<DeliverTxResponse>;
-    sendMsgUpdateSpaceResponse({ value, fee, memo }: sendMsgUpdateSpaceResponseParams): Promise<DeliverTxResponse>;
+    sendQuerySignatureRequestsResponse({ value, fee, memo }: sendQuerySignatureRequestsResponseParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateKeyRequestResponse({ value, fee, memo }: sendMsgUpdateKeyRequestResponseParams): Promise<DeliverTxResponse>;
+    sendQuerySpaceByAddressResponse({ value, fee, memo }: sendQuerySpaceByAddressResponseParams): Promise<DeliverTxResponse>;
+    sendQueryKeychainByAddressRequest({ value, fee, memo }: sendQueryKeychainByAddressRequestParams): Promise<DeliverTxResponse>;
     sendMsgFulfilSignatureRequestResponse({ value, fee, memo }: sendMsgFulfilSignatureRequestResponseParams): Promise<DeliverTxResponse>;
+    sendSignTransactionRequest({ value, fee, memo }: sendSignTransactionRequestParams): Promise<DeliverTxResponse>;
+    sendKey({ value, fee, memo }: sendKeyParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateParamsResponse({ value, fee, memo }: sendMsgUpdateParamsResponseParams): Promise<DeliverTxResponse>;
     sendMsgAddSpaceOwnerResponse({ value, fee, memo }: sendMsgAddSpaceOwnerResponseParams): Promise<DeliverTxResponse>;
+    sendMsgNewKeychainResponse({ value, fee, memo }: sendMsgNewKeychainResponseParams): Promise<DeliverTxResponse>;
+    sendQuerySpacesRequest({ value, fee, memo }: sendQuerySpacesRequestParams): Promise<DeliverTxResponse>;
     sendMsgRemoveSpaceOwnerResponse({ value, fee, memo }: sendMsgRemoveSpaceOwnerResponseParams): Promise<DeliverTxResponse>;
-    keychainFees({ value }: keychainFeesParams): EncodeObject;
-    msgAddSpaceOwner({ value }: msgAddSpaceOwnerParams): EncodeObject;
-    queryKeyRequestsRequest({ value }: queryKeyRequestsRequestParams): EncodeObject;
-    walletKeyResponse({ value }: walletKeyResponseParams): EncodeObject;
+    sendMsgUpdateSpace({ value, fee, memo }: sendMsgUpdateSpaceParams): Promise<DeliverTxResponse>;
+    sendQueryKeyRequestByIdRequest({ value, fee, memo }: sendQueryKeyRequestByIdRequestParams): Promise<DeliverTxResponse>;
+    sendWalletKeyResponse({ value, fee, memo }: sendWalletKeyResponseParams): Promise<DeliverTxResponse>;
+    sendQueryKeyRequestByIdResponse({ value, fee, memo }: sendQueryKeyRequestByIdResponseParams): Promise<DeliverTxResponse>;
+    sendKeyRequest({ value, fee, memo }: sendKeyRequestParams): Promise<DeliverTxResponse>;
+    sendQueryKeyRequestsRequest({ value, fee, memo }: sendQueryKeyRequestsRequestParams): Promise<DeliverTxResponse>;
+    sendQueryKeysResponse({ value, fee, memo }: sendQueryKeysResponseParams): Promise<DeliverTxResponse>;
+    sendQuerySignTransactionRequestsRequest({ value, fee, memo }: sendQuerySignTransactionRequestsRequestParams): Promise<DeliverTxResponse>;
+    sendQueryParamsRequest({ value, fee, memo }: sendQueryParamsRequestParams): Promise<DeliverTxResponse>;
+    sendQuerySpacesResponse({ value, fee, memo }: sendQuerySpacesResponseParams): Promise<DeliverTxResponse>;
+    sendQueryKeysRequest({ value, fee, memo }: sendQueryKeysRequestParams): Promise<DeliverTxResponse>;
+    sendQuerySignTransactionRequestByIdRequest({ value, fee, memo }: sendQuerySignTransactionRequestByIdRequestParams): Promise<DeliverTxResponse>;
+    sendKeychainFees({ value, fee, memo }: sendKeychainFeesParams): Promise<DeliverTxResponse>;
+    sendMsgNewSpaceResponse({ value, fee, memo }: sendMsgNewSpaceResponseParams): Promise<DeliverTxResponse>;
+    sendMsgAddKeychainParty({ value, fee, memo }: sendMsgAddKeychainPartyParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateSpaceResponse({ value, fee, memo }: sendMsgUpdateSpaceResponseParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateParams({ value, fee, memo }: sendMsgUpdateParamsParams): Promise<DeliverTxResponse>;
+    sendQuerySignatureRequestsRequest({ value, fee, memo }: sendQuerySignatureRequestsRequestParams): Promise<DeliverTxResponse>;
+    sendQuerySignTransactionRequestByIdResponse({ value, fee, memo }: sendQuerySignTransactionRequestByIdResponseParams): Promise<DeliverTxResponse>;
+    sendKeyResponse({ value, fee, memo }: sendKeyResponseParams): Promise<DeliverTxResponse>;
+    sendQuerySignatureRequestByIdRequest({ value, fee, memo }: sendQuerySignatureRequestByIdRequestParams): Promise<DeliverTxResponse>;
+    sendQuerySignTransactionRequestsResponse({ value, fee, memo }: sendQuerySignTransactionRequestsResponseParams): Promise<DeliverTxResponse>;
+    sendMsgNewKeyRequest({ value, fee, memo }: sendMsgNewKeyRequestParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateKeyRequest({ value, fee, memo }: sendMsgUpdateKeyRequestParams): Promise<DeliverTxResponse>;
+    sendMsgFulfilSignatureRequest({ value, fee, memo }: sendMsgFulfilSignatureRequestParams): Promise<DeliverTxResponse>;
+    sendQueryKeychainByAddressResponse({ value, fee, memo }: sendQueryKeychainByAddressResponseParams): Promise<DeliverTxResponse>;
+    sendGenesisState({ value, fee, memo }: sendGenesisStateParams): Promise<DeliverTxResponse>;
+    sendMsgAddKeychainPartyResponse({ value, fee, memo }: sendMsgAddKeychainPartyResponseParams): Promise<DeliverTxResponse>;
+    sendMetadataEthereum({ value, fee, memo }: sendMetadataEthereumParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateKeychain({ value, fee, memo }: sendMsgUpdateKeychainParams): Promise<DeliverTxResponse>;
+    sendMsgNewKey({ value, fee, memo }: sendMsgNewKeyParams): Promise<DeliverTxResponse>;
+    sendMsgSignedData({ value, fee, memo }: sendMsgSignedDataParams): Promise<DeliverTxResponse>;
+    sendQuerySpacesByOwnerRequest({ value, fee, memo }: sendQuerySpacesByOwnerRequestParams): Promise<DeliverTxResponse>;
+    sendQuerySignatureRequestByIdResponse({ value, fee, memo }: sendQuerySignatureRequestByIdResponseParams): Promise<DeliverTxResponse>;
+    sendKeychain({ value, fee, memo }: sendKeychainParams): Promise<DeliverTxResponse>;
+    sendMsgRemoveSpaceOwner({ value, fee, memo }: sendMsgRemoveSpaceOwnerParams): Promise<DeliverTxResponse>;
+    sendMsgUpdateKeychainResponse({ value, fee, memo }: sendMsgUpdateKeychainResponseParams): Promise<DeliverTxResponse>;
+    sendQueryParamsResponse({ value, fee, memo }: sendQueryParamsResponseParams): Promise<DeliverTxResponse>;
+    msgNewSignTransactionRequest({ value }: msgNewSignTransactionRequestParams): EncodeObject;
+    msgNewSignTransactionRequestResponse({ value }: msgNewSignTransactionRequestResponseParams): EncodeObject;
+    signTransactionRequestResponse({ value }: signTransactionRequestResponseParams): EncodeObject;
     msgNewSpace({ value }: msgNewSpaceParams): EncodeObject;
-    msgUpdateKeyRequestResponse({ value }: msgUpdateKeyRequestResponseParams): EncodeObject;
-    signTransactionRequest({ value }: signTransactionRequestParams): EncodeObject;
-    querySignatureRequestByIdRequest({ value }: querySignatureRequestByIdRequestParams): EncodeObject;
-    msgUpdateParams({ value }: msgUpdateParamsParams): EncodeObject;
+    msgNewKeychain({ value }: msgNewKeychainParams): EncodeObject;
     msgNewSignatureRequest({ value }: msgNewSignatureRequestParams): EncodeObject;
-    keyRequest({ value }: keyRequestParams): EncodeObject;
-    querySpacesRequest({ value }: querySpacesRequestParams): EncodeObject;
     queryKeychainsResponse({ value }: queryKeychainsResponseParams): EncodeObject;
-    queryKeysResponse({ value }: queryKeysResponseParams): EncodeObject;
-    msgAddKeychainPartyResponse({ value }: msgAddKeychainPartyResponseParams): EncodeObject;
-    msgUpdateKeychainResponse({ value }: msgUpdateKeychainResponseParams): EncodeObject;
-    msgAddKeychainParty({ value }: msgAddKeychainPartyParams): EncodeObject;
+    msgNewSignatureRequestResponse({ value }: msgNewSignatureRequestResponseParams): EncodeObject;
     signRequest({ value }: signRequestParams): EncodeObject;
-    space({ value }: spaceParams): EncodeObject;
-    queryKeyRequestByIdRequest({ value }: queryKeyRequestByIdRequestParams): EncodeObject;
-    querySignTransactionRequestsResponse({ value }: querySignTransactionRequestsResponseParams): EncodeObject;
-    msgNewSpaceResponse({ value }: msgNewSpaceResponseParams): EncodeObject;
-    queryParamsResponse({ value }: queryParamsResponseParams): EncodeObject;
-    queryKeyRequestByIdResponse({ value }: queryKeyRequestByIdResponseParams): EncodeObject;
-    msgNewKeyRequestResponse({ value }: msgNewKeyRequestResponseParams): EncodeObject;
-    msgUpdateKeyRequest({ value }: msgUpdateKeyRequestParams): EncodeObject;
-    params({ value }: paramsParams): EncodeObject;
-    queryKeychainByAddressResponse({ value }: queryKeychainByAddressResponseParams): EncodeObject;
-    querySignatureRequestsRequest({ value }: querySignatureRequestsRequestParams): EncodeObject;
-    msgSignedData({ value }: msgSignedDataParams): EncodeObject;
-    metadataEthereum({ value }: metadataEthereumParams): EncodeObject;
-    querySpaceByAddressResponse({ value }: querySpaceByAddressResponseParams): EncodeObject;
-    queryKeychainByAddressRequest({ value }: queryKeychainByAddressRequestParams): EncodeObject;
-    msgUpdateKeychain({ value }: msgUpdateKeychainParams): EncodeObject;
-    querySignTransactionRequestByIdResponse({ value }: querySignTransactionRequestByIdResponseParams): EncodeObject;
-    msgUpdateSpace({ value }: msgUpdateSpaceParams): EncodeObject;
-    msgFulfilSignatureRequest({ value }: msgFulfilSignatureRequestParams): EncodeObject;
     queryKeychainsRequest({ value }: queryKeychainsRequestParams): EncodeObject;
     querySpaceByAddressRequest({ value }: querySpaceByAddressRequestParams): EncodeObject;
-    querySignTransactionRequestByIdRequest({ value }: querySignTransactionRequestByIdRequestParams): EncodeObject;
-    msgNewSignTransactionRequestResponse({ value }: msgNewSignTransactionRequestResponseParams): EncodeObject;
-    key({ value }: keyParams): EncodeObject;
-    querySignatureRequestByIdResponse({ value }: querySignatureRequestByIdResponseParams): EncodeObject;
-    msgRemoveSpaceOwner({ value }: msgRemoveSpaceOwnerParams): EncodeObject;
-    msgNewKeyRequest({ value }: msgNewKeyRequestParams): EncodeObject;
-    msgNewSignTransactionRequest({ value }: msgNewSignTransactionRequestParams): EncodeObject;
-    keychain({ value }: keychainParams): EncodeObject;
-    querySpacesByOwnerRequest({ value }: querySpacesByOwnerRequestParams): EncodeObject;
-    queryKeysRequest({ value }: queryKeysRequestParams): EncodeObject;
-    querySignatureRequestsResponse({ value }: querySignatureRequestsResponseParams): EncodeObject;
-    querySignTransactionRequestsRequest({ value }: querySignTransactionRequestsRequestParams): EncodeObject;
-    genesisState({ value }: genesisStateParams): EncodeObject;
-    msgUpdateParamsResponse({ value }: msgUpdateParamsResponseParams): EncodeObject;
-    msgNewKeychainResponse({ value }: msgNewKeychainResponseParams): EncodeObject;
-    querySpacesResponse({ value }: querySpacesResponseParams): EncodeObject;
-    keyResponse({ value }: keyResponseParams): EncodeObject;
-    msgNewSignatureRequestResponse({ value }: msgNewSignatureRequestResponseParams): EncodeObject;
-    signTransactionRequestResponse({ value }: signTransactionRequestResponseParams): EncodeObject;
-    msgNewKeychain({ value }: msgNewKeychainParams): EncodeObject;
-    msgNewKey({ value }: msgNewKeyParams): EncodeObject;
-    queryParamsRequest({ value }: queryParamsRequestParams): EncodeObject;
+    space({ value }: spaceParams): EncodeObject;
+    params({ value }: paramsParams): EncodeObject;
+    msgAddSpaceOwner({ value }: msgAddSpaceOwnerParams): EncodeObject;
+    msgNewKeyRequestResponse({ value }: msgNewKeyRequestResponseParams): EncodeObject;
     queryKeyRequestsResponse({ value }: queryKeyRequestsResponseParams): EncodeObject;
-    msgUpdateSpaceResponse({ value }: msgUpdateSpaceResponseParams): EncodeObject;
+    querySignatureRequestsResponse({ value }: querySignatureRequestsResponseParams): EncodeObject;
+    msgUpdateKeyRequestResponse({ value }: msgUpdateKeyRequestResponseParams): EncodeObject;
+    querySpaceByAddressResponse({ value }: querySpaceByAddressResponseParams): EncodeObject;
+    queryKeychainByAddressRequest({ value }: queryKeychainByAddressRequestParams): EncodeObject;
     msgFulfilSignatureRequestResponse({ value }: msgFulfilSignatureRequestResponseParams): EncodeObject;
+    signTransactionRequest({ value }: signTransactionRequestParams): EncodeObject;
+    key({ value }: keyParams): EncodeObject;
+    msgUpdateParamsResponse({ value }: msgUpdateParamsResponseParams): EncodeObject;
     msgAddSpaceOwnerResponse({ value }: msgAddSpaceOwnerResponseParams): EncodeObject;
+    msgNewKeychainResponse({ value }: msgNewKeychainResponseParams): EncodeObject;
+    querySpacesRequest({ value }: querySpacesRequestParams): EncodeObject;
     msgRemoveSpaceOwnerResponse({ value }: msgRemoveSpaceOwnerResponseParams): EncodeObject;
+    msgUpdateSpace({ value }: msgUpdateSpaceParams): EncodeObject;
+    queryKeyRequestByIdRequest({ value }: queryKeyRequestByIdRequestParams): EncodeObject;
+    walletKeyResponse({ value }: walletKeyResponseParams): EncodeObject;
+    queryKeyRequestByIdResponse({ value }: queryKeyRequestByIdResponseParams): EncodeObject;
+    keyRequest({ value }: keyRequestParams): EncodeObject;
+    queryKeyRequestsRequest({ value }: queryKeyRequestsRequestParams): EncodeObject;
+    queryKeysResponse({ value }: queryKeysResponseParams): EncodeObject;
+    querySignTransactionRequestsRequest({ value }: querySignTransactionRequestsRequestParams): EncodeObject;
+    queryParamsRequest({ value }: queryParamsRequestParams): EncodeObject;
+    querySpacesResponse({ value }: querySpacesResponseParams): EncodeObject;
+    queryKeysRequest({ value }: queryKeysRequestParams): EncodeObject;
+    querySignTransactionRequestByIdRequest({ value }: querySignTransactionRequestByIdRequestParams): EncodeObject;
+    keychainFees({ value }: keychainFeesParams): EncodeObject;
+    msgNewSpaceResponse({ value }: msgNewSpaceResponseParams): EncodeObject;
+    msgAddKeychainParty({ value }: msgAddKeychainPartyParams): EncodeObject;
+    msgUpdateSpaceResponse({ value }: msgUpdateSpaceResponseParams): EncodeObject;
+    msgUpdateParams({ value }: msgUpdateParamsParams): EncodeObject;
+    querySignatureRequestsRequest({ value }: querySignatureRequestsRequestParams): EncodeObject;
+    querySignTransactionRequestByIdResponse({ value }: querySignTransactionRequestByIdResponseParams): EncodeObject;
+    keyResponse({ value }: keyResponseParams): EncodeObject;
+    querySignatureRequestByIdRequest({ value }: querySignatureRequestByIdRequestParams): EncodeObject;
+    querySignTransactionRequestsResponse({ value }: querySignTransactionRequestsResponseParams): EncodeObject;
+    msgNewKeyRequest({ value }: msgNewKeyRequestParams): EncodeObject;
+    msgUpdateKeyRequest({ value }: msgUpdateKeyRequestParams): EncodeObject;
+    msgFulfilSignatureRequest({ value }: msgFulfilSignatureRequestParams): EncodeObject;
+    queryKeychainByAddressResponse({ value }: queryKeychainByAddressResponseParams): EncodeObject;
+    genesisState({ value }: genesisStateParams): EncodeObject;
+    msgAddKeychainPartyResponse({ value }: msgAddKeychainPartyResponseParams): EncodeObject;
+    metadataEthereum({ value }: metadataEthereumParams): EncodeObject;
+    msgUpdateKeychain({ value }: msgUpdateKeychainParams): EncodeObject;
+    msgNewKey({ value }: msgNewKeyParams): EncodeObject;
+    msgSignedData({ value }: msgSignedDataParams): EncodeObject;
+    querySpacesByOwnerRequest({ value }: querySpacesByOwnerRequestParams): EncodeObject;
+    querySignatureRequestByIdResponse({ value }: querySignatureRequestByIdResponseParams): EncodeObject;
+    keychain({ value }: keychainParams): EncodeObject;
+    msgRemoveSpaceOwner({ value }: msgRemoveSpaceOwnerParams): EncodeObject;
+    msgUpdateKeychainResponse({ value }: msgUpdateKeychainResponseParams): EncodeObject;
+    queryParamsResponse({ value }: queryParamsResponseParams): EncodeObject;
 };
 interface QueryClientOptions {
     addr: string;
